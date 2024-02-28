@@ -1,0 +1,323 @@
+/* Color palette */
+:root {
+    --primary-color: #e8eaed; /* Main color */
+    --visited-link-color: #e8eaed; /* Visited link color */
+    --active-link-color: #579aff; /* Active link color */
+    --button-bg-color: #e8eaed; /* Background color for buttons */
+    --button-text-color: #202124; /* Text color for buttons */
+    --font-family: "Bebas Neue", sans-serif;
+    --font-weight: 400;
+    --font-style: normal;
+    --font-size-base: 15px; /* Base font size */
+    --font-family2: "Montserrat", sans-serif;
+    --font-optical-sizing: auto;
+    --font-weight2: <400>; /* Use a value from 100 to 900 */
+    --font-style2: normal;
+}
+
+
+body {
+    color: var(--primary-color);
+    background-color: var(--button-text-color);
+    font-family: var(--font-family2);
+    font-weight: var(--font-weight2);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+}
+
+h1 {
+    font-family: var(--font-family);
+    color: var(--primary-color);
+    font-style: var(--font-style);
+    font-size: 52px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: var(--font-family);
+    font-size: 45px;
+    font-weight: bold;
+    text-transform: uppercase; 
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.white-box {
+    padding: 10px; /* Füge etwas Abstand zwischen Text und Rahmen hinzu */
+    border: 2px solid white; /* Stelle einen weißen Rahmen mit einer Dicke von 2 Pixeln ein */
+    display: inline-block; /* Der Rahmen wird nur so groß wie der Inhalt und das Padding */
+}
+
+a {
+    color: var(--primary-color);
+}
+
+a:visited {
+    color: var(--visited-link-color);
+}
+
+a:hover, a:focus {
+    text-decoration: none;
+}
+
+a:active {
+    color: var(--active-link-color);
+}
+
+.address {
+    margin: 25px;
+}
+
+button {
+    border: none;
+    font-family: inherit;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 3px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+button:hover, button:focus {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.button__secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.navigation-list__item--active {
+    text-decoration: none;
+}
+
+.page-footer {
+    clear: both;
+}
+
+.profile__portrait {
+    float: left;
+    width: 250px;
+    margin-right: 40px;
+    border-radius: 50%;
+}
+
+.profile {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.page-footer {
+    clear: both;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.page-header {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+}
+
+.page-header__item {
+    flex: 0 1 200px;
+}
+
+.page-header__item:last-child {
+    flex-grow: 1;
+    text-align: right;
+}
+
+.navigation-list {
+    list-style-type: none;
+}
+
+.navigation-list li {
+    display: inline-block;
+    margin-left: 15px;
+  }
+
+.grid__item {
+    display: inline-block;
+    width: 33%;
+    border-radius: 12px;
+}
+
+@supports (display: grid) {
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 20px;
+        margin: 16px 24px;
+    }
+
+    .grid__item {
+        background-color: rgb(44, 41, 41);
+        color: white;
+        width: auto;
+        min-height: auto;
+        margin: 0;
+        padding: 24px;
+    }
+
+    .grid__item:last-child {
+        grid-column: 3 / 3;
+        grid-row: 1 / 3;
+    }
+}
+
+.grid__item:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+@media all and (max-width: 500px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media all and (min-width: 500px) and (max-width: 750px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media all and (max-width: 750px) {
+    .grid {
+        grid-gap: 10px;
+    }
+
+@media all and (max-width: 500px) {
+    .profile {
+        text-align: center;
+    }
+    .profile__portrait {
+        margin: 0 auto;
+        float: none; 
+    }
+    }
+
+    .grid__item:last-child {
+        grid-column: auto / auto;
+        grid-row: auto / auto;
+    }
+}
+
+.button_cv {
+    border: none;
+    display: inline-block;
+    font-family: inherit;
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 3px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    transition-duration: 0.2s;
+    transition-property: opacity;
+    text-align: center;
+    margin: auto;
+}
+
+.button_cv:hover,
+.button_cv:focus {
+    cursor: pointer;
+    opacity: 0.8;
+    font-size: 18px;
+    transition: 0.4s font-size;
+}
+
+.custom-list {
+    list-style-type: none;
+}
+
+@keyframes color-change {
+    0% {
+        fill: #edc655;
+    }
+
+    50% {
+        fill: #fcffad;
+    }
+
+    100% {
+        fill: #f76414;
+    }
+}
+
+.sun {
+    animation-duration: 4s;
+    animation-name: color-change;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+@keyframes cloud-move {
+    from {
+        transform: translate(0, 50px);
+    }
+
+    to {
+        transform: translate(200px, 50px);
+    }
+}
+
+.cloud-front {
+    animation-duration: 30s;
+    animation-name: cloud-move;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+@keyframes cloud-move-reverse {
+    from {
+        transform: translate(446px, 48px);
+    }
+
+    to {
+        transform: translate(100px, 48px);
+    }
+}
+
+.cloud-back {
+    animation: 34s cloud-move-reverse infinite alternate linear;
+}
+
+.heading_work {
+    margin-left: 24px;
+}
+
+.about_content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+#about-picture {
+    padding: 24px;
+}
+
+@media all and (max-width: 500px) {
+    .about_content {
+        text-align: center;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+}

@@ -15,7 +15,6 @@
     --font-style2: normal;
 }
 
-
 body {
     color: var(--primary-color);
     background-color: var(--button-text-color);
@@ -147,19 +146,19 @@ button:hover, button:focus {
 .navigation-list li {
     display: inline-block;
     margin-left: 15px;
-  }
+}
 
 .grid__item {
     display: inline-block;
-    width: 33%;
     border-radius: 12px;
+    width: auto; /* Remove fixed width */
 }
 
 @supports (display: grid) {
     .grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 20px;
+        grid-gap: 30px; /* Increase the gap between grid items */
         margin: 16px 24px;
     }
 
@@ -170,22 +169,59 @@ button:hover, button:focus {
         min-height: auto;
         margin: 0;
         padding: 24px;
+        transition: transform 0.3s ease; /* Add smooth transition for hover effect */
     }
 
     .grid__item:last-child {
-        grid-column: 3 / 3;
-        grid-row: 1 / 3;
+        grid-column: 3 / 2;
+        
     }
 }
 
 .grid__item:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
+    transform: scale(1.1); /* Enlarge the grid item on hover */
+}
+
+/* Adjusting the gap for smaller screens */
+@media all and (max-width: 750px) {
+    .grid {
+        grid-gap: 20px; /* Reduce the gap slightly for smaller screens */
+    }
+}
+
+.grid__item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 @media all and (max-width: 500px) {
     .grid {
         grid-template-columns: 1fr;
+    }
+
+    .grid__item {
+        padding: 12px;
+        margin: 8px 0;
+    }
+
+    .heading_work h1 {
+        font-size: 36px; /* Adjust heading size for small screens */
+    }
+
+    .profile {
+        text-align: center;
+    }
+
+    .profile__portrait {
+        margin: 0 auto;
+        float: none;
+    }
+
+    .grid__item:last-child {
+        grid-column: auto / auto;
+        grid-row: auto / auto;
     }
 }
 
@@ -193,26 +229,25 @@ button:hover, button:focus {
     .grid {
         grid-template-columns: 1fr 1fr;
     }
+
+    .grid__item {
+        padding: 16px;
+    }
 }
 
 @media all and (max-width: 750px) {
     .grid {
         grid-gap: 10px;
     }
+}
+
+.grid__item p {
+    font-size: 1rem; /* Default size */
+}
 
 @media all and (max-width: 500px) {
-    .profile {
-        text-align: center;
-    }
-    .profile__portrait {
-        margin: 0 auto;
-        float: none; 
-    }
-    }
-
-    .grid__item:last-child {
-        grid-column: auto / auto;
-        grid-row: auto / auto;
+    .grid__item p {
+        font-size: 0.9rem; /* Slightly smaller on small screens */
     }
 }
 
@@ -320,4 +355,19 @@ button:hover, button:focus {
         margin: 0 auto;
         padding: 0 20px;
     }
+}
+
+.chat-images-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Space between the images */
+}
+
+.chat-image {
+    width: 48%; /* Each image takes up 48% of the available width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.link-spacing {
+    margin-left: 20px; /* Adjust this value to increase the spacing */
 }

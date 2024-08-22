@@ -15,6 +15,18 @@
     --font-style2: normal;
 }
 
+/* Grundlayout für die gesamte Seite */
+body, html {
+    height: 100%; /* Macht sicher, dass das HTML und der Body die volle Höhe des Fensters einnehmen */
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* Hauptinhalt nimmt den verbleibenden Platz ein */
+}
+
 body {
     color: var(--primary-color);
     background-color: var(--button-text-color);
@@ -23,6 +35,7 @@ body {
     font-size: var(--font-size-base);
     line-height: 1.6;
 }
+
 
 h1 {
     font-family: var(--font-family);
@@ -68,9 +81,6 @@ a:active {
     color: var(--active-link-color);
 }
 
-.address {
-    margin: 25px;
-}
 
 button {
     border: none;
@@ -97,10 +107,6 @@ button:hover, button:focus {
     text-decoration: none;
 }
 
-.page-footer {
-    clear: both;
-}
-
 .profile__portrait {
     float: left;
     width: 250px;
@@ -122,6 +128,7 @@ button:hover, button:focus {
     display: flex;
     flex-direction: column;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .page-header {
@@ -279,60 +286,6 @@ button:hover, button:focus {
     list-style-type: none;
 }
 
-@keyframes color-change {
-    0% {
-        fill: #edc655;
-    }
-
-    50% {
-        fill: #fcffad;
-    }
-
-    100% {
-        fill: #f76414;
-    }
-}
-
-.sun {
-    animation-duration: 4s;
-    animation-name: color-change;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: linear;
-}
-
-@keyframes cloud-move {
-    from {
-        transform: translate(0, 50px);
-    }
-
-    to {
-        transform: translate(200px, 50px);
-    }
-}
-
-.cloud-front {
-    animation-duration: 30s;
-    animation-name: cloud-move;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: linear;
-}
-
-@keyframes cloud-move-reverse {
-    from {
-        transform: translate(446px, 48px);
-    }
-
-    to {
-        transform: translate(100px, 48px);
-    }
-}
-
-.cloud-back {
-    animation: 34s cloud-move-reverse infinite alternate linear;
-}
-
 .heading_work {
     margin-left: 24px;
 }
@@ -342,10 +295,6 @@ button:hover, button:focus {
     max-width: 700px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-#about-picture {
-    padding: 24px;
 }
 
 @media all and (max-width: 500px) {
@@ -371,3 +320,197 @@ button:hover, button:focus {
 .link-spacing {
     margin-left: 20px; /* Adjust this value to increase the spacing */
 }
+
+
+
+
+/* Toolbelt */
+@keyframes toolbelt {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  .toolbelt {
+    margin:  5vh auto;
+    max-width: 75%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
+  
+  .toolbelt h1 {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .toolbelt:before,
+  .toolbelt:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    width: 250px;
+    height: 100%;
+    z-index: 2;
+  }
+  
+  .toolbelt:before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), var(--button-text-color));
+  }
+  
+  .toolbelt:after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--button-text-color));
+  }
+  
+  .toolbelt:hover .toolbelt__logos {
+    animation-play-state: paused;
+  }
+  
+  .toolbelt__logos {
+    display: inline-block;
+    padding: 30px 0;
+    animation: 25s toolbelt infinite linear;
+  }
+  
+  .toolbelt__logos img {
+    height: 60px;
+    margin: 0 30px;
+  }
+
+
+  
+
+
+/* CONTACT HTML */
+
+.address {
+    margin: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+.contact__animation {
+    margin-right: 20%; 
+    
+}
+
+.contact__animation img {
+    width: 270px; /* Standardbildgröße für Desktop */
+    height: 270px;
+}
+
+    
+/* SVG animation */
+.contact__animation img:hover {
+    animation: shake 0.3s infinite;
+}
+  
+/* Für Tablets (Bildschirmbreite bis 1024px) */
+@media (max-width: 1024px) {
+    .address {
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+        text-align: center;
+    }
+
+    .contact__animation {
+        margin-right: 0; /* Bild unter den Text setzen */
+        margin-top: 20px;
+    }
+
+    .contact__animation img {
+        width: 220px; /* Bildgröße für Tablets */
+        height: 220px;
+    }
+
+    h1 {
+        font-size: 48px; /* Leicht kleinere Schriftgröße */
+    }
+
+    p {
+        font-size: 16px; /* Leicht kleinere Schriftgröße */
+    }
+}
+
+/* Für Smartphones (Bildschirmbreite bis 768px) */
+@media (max-width: 768px) {
+    .address {
+        margin: 15px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact__animation img {
+        width: 180px; /* Bildgröße für Smartphones */
+        height: 180px;
+    }
+
+    h1 {
+        font-size: 36px; /* Kleinere Schriftgröße */
+    }
+
+    p {
+        font-size: 14px; /* Kleinere Schriftgröße */
+    }
+}
+
+/* Für sehr kleine Smartphones (Bildschirmbreite bis 480px) */
+@media (max-width: 480px) {
+    .address {
+        margin: 10px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact__animation img {
+        width: 150px; /* Bildgröße für kleine Smartphones */
+        height: 150px;
+    }
+
+    h1 {
+        font-size: 30px; /* Noch kleinere Schriftgröße */
+    }
+
+    p {
+        font-size: 12px; /* Noch kleinere Schriftgröße */
+    }
+}
+
+/* Für Ultra-Wide Bildschirme (Bildschirmbreite ab 1920px) */
+@media (min-width: 1920px) {
+    .contact__animation img {
+        width: 300px; /* Größeres Bild für große Bildschirme */
+        height: 300px;
+    }
+
+    h1 {
+        font-size: 64px; /* Größere Schriftgröße */
+    }
+
+    p {
+        font-size: 18px; /* Größere Schriftgröße */
+    }
+}
+
+
+
+
+
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0eg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+

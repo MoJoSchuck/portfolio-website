@@ -391,13 +391,12 @@ button:hover, button:focus {
     margin: 50px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: space-evenly;
 }
 
 
 .contact__animation {
-    margin-right: 20%; 
+    margin-right: 10%; 
     
 }
 
@@ -419,24 +418,38 @@ button:hover, button:focus {
         align-items: center;
         margin: 20px;
         text-align: center;
+        justify-content: space-evenly;
     }
 
     .contact__animation {
         margin-right: 0; /* Bild unter den Text setzen */
-        margin-top: 20px;
     }
 
     .contact__animation img {
-        width: 220px; /* Bildgröße für Tablets */
-        height: 220px;
+        width: 270px; /* Bildgröße für Tablets */
+        height: 270px;
     }
 
-    h1 {
-        font-size: 48px; /* Leicht kleinere Schriftgröße */
+    .address h1 {
+        font-size: 60px; /* Leicht kleinere Schriftgröße */
     }
 
-    p {
-        font-size: 16px; /* Leicht kleinere Schriftgröße */
+    .address p {
+        font-size: 20px; /* Leicht kleinere Schriftgröße */
+    }
+
+    .page-footer p,a {
+        font-size: 20px;
+    }
+
+    .page-footer .social.media img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .page-header img {
+        width: 190px;
+        height: 120px; 
     }
 }
 
@@ -447,19 +460,38 @@ button:hover, button:focus {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        justify-content: space-evenly;
+    }
+
+    .contact__animation {
+        margin-right: 0; /* Bild unter den Text setzen */
     }
 
     .contact__animation img {
-        width: 180px; /* Bildgröße für Smartphones */
-        height: 180px;
+        width: 200px; /* Bildgröße für Smartphones */
+        height: 200px;
     }
 
-    h1 {
-        font-size: 36px; /* Kleinere Schriftgröße */
+    .address h1 {
+        font-size: 55px; /* Kleinere Schriftgröße */
     }
 
-    p {
-        font-size: 14px; /* Kleinere Schriftgröße */
+    .address p {
+        font-size: 16px; /* Kleinere Schriftgröße */
+    }
+
+    .page-footer p,a {
+        font-size: 16px;
+    }
+
+    .page-footer .social.media img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .page-header img {
+        width: 190px;
+        height: 120px; 
     }
 }
 
@@ -470,19 +502,34 @@ button:hover, button:focus {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        justify-content: space-evenly;
     }
 
     .contact__animation img {
-        width: 150px; /* Bildgröße für kleine Smartphones */
-        height: 150px;
+        width: 120px; /* Bildgröße für kleine Smartphones */
+        height: 120px;
     }
 
-    h1 {
-        font-size: 30px; /* Noch kleinere Schriftgröße */
+    .address h1 {
+        font-size: 28px; /* Noch kleinere Schriftgröße */
     }
 
-    p {
+    .address p {
         font-size: 12px; /* Noch kleinere Schriftgröße */
+    }
+
+    .page-footer p,a {
+        font-size: 11px;
+    }
+
+    .page-footer .social.media img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .page-header img {
+        width: 80px;
+        height: 80px; 
     }
 }
 
@@ -493,18 +540,14 @@ button:hover, button:focus {
         height: 300px;
     }
 
-    h1 {
+    .address h1 {
         font-size: 64px; /* Größere Schriftgröße */
     }
 
-    p {
+    .address p {
         font-size: 18px; /* Größere Schriftgröße */
     }
 }
-
-
-
-
 
 @keyframes shake {
     0% { transform: rotate(0deg); }
@@ -513,4 +556,3 @@ button:hover, button:focus {
     75% { transform: rotate(-5deg); }
     100% { transform: rotate(0deg); }
 }
-

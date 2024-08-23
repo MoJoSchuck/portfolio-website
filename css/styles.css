@@ -103,6 +103,30 @@ button:hover, button:focus {
     color: var(--text-color);
 }
 
+.button_cv {
+    border: none;
+    display: inline-block;
+    font-family: inherit;
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 3px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    transition-duration: 0.2s;
+    transition-property: opacity;
+    text-align: center;
+    margin: auto;
+}
+
+.button_cv:hover,
+.button_cv:focus {
+    cursor: pointer;
+    opacity: 0.8;
+    font-size: 18px;
+    transition: 0.4s font-size;
+}
+
 .navigation-list__item--active {
     text-decoration: none;
 }
@@ -161,6 +185,25 @@ button:hover, button:focus {
     width: auto; /* Remove fixed width */
 }
 
+
+
+
+/* HOME.HTML */
+
+.profile {
+    text-align: center;
+}
+
+.profile__portrait {
+    margin: 0 auto;
+    float: none;
+}
+
+
+
+
+/* WORK.HTML */
+
 @supports (display: grid) {
     .grid {
         display: grid;
@@ -185,8 +228,33 @@ button:hover, button:focus {
     }
 }
 
-.grid__item:hover {
-    transform: scale(1.1); /* Enlarge the grid item on hover */
+.link-spacing {
+    margin-left: 20px; /* Adjust this value to increase the spacing */
+}
+
+.chat-images-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Space between the images */
+}
+
+.chat-image {
+    width: 48%; /* Each image takes up 48% of the available width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* ultra wide screens */
+@media all and (min-width: 1920px) {
+    .grid {
+        margin: 16px 400px;
+    }
+}
+
+/* big screens */
+@media all and (min-width: 750px) and (max-width: 1920px) {
+    .grid {
+        margin: 16px 100px;
+    }
 }
 
 /* Adjusting the gap for smaller screens */
@@ -194,13 +262,6 @@ button:hover, button:focus {
     .grid {
         grid-gap: 20px; /* Reduce the gap slightly for smaller screens */
     }
-}
-
-.grid__item img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
 }
 
 @media all and (max-width: 500px) {
@@ -217,15 +278,6 @@ button:hover, button:focus {
         font-size: 36px; /* Adjust heading size for small screens */
     }
 
-    .profile {
-        text-align: center;
-    }
-
-    .profile__portrait {
-        margin: 0 auto;
-        float: none;
-    }
-
     .grid__item:last-child {
         grid-column: auto / auto;
         grid-row: auto / auto;
@@ -240,6 +292,11 @@ button:hover, button:focus {
     .grid__item {
         padding: 16px;
     }
+
+    .grid__item:last-child {
+        grid-column: 2 / 1;
+        
+    }
 }
 
 @media all and (max-width: 750px) {
@@ -248,39 +305,27 @@ button:hover, button:focus {
     }
 }
 
-.grid__item p {
-    font-size: 1rem; /* Default size */
-}
-
 @media all and (max-width: 500px) {
     .grid__item p {
         font-size: 0.9rem; /* Slightly smaller on small screens */
     }
 }
 
-.button_cv {
-    border: none;
-    display: inline-block;
-    font-family: inherit;
-    background-color: var(--primary-color);
-    color: var(--button-text-color);
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 3px;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-    transition-duration: 0.2s;
-    transition-property: opacity;
-    text-align: center;
-    margin: auto;
+.grid__item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
-.button_cv:hover,
-.button_cv:focus {
-    cursor: pointer;
-    opacity: 0.8;
-    font-size: 18px;
-    transition: 0.4s font-size;
+.grid__item:hover {
+    transform: scale(1.1); /* Enlarge the grid item on hover */
 }
+
+.grid__item p {
+    font-size: 1rem; /* Default size */
+}
+
 
 .custom-list {
     list-style-type: none;
@@ -290,6 +335,12 @@ button:hover, button:focus {
     margin-left: 24px;
 }
 
+
+
+
+
+/* ABOUT.HTML */
+
 .about_content {
     text-align: center;
     max-width: 700px;
@@ -297,31 +348,22 @@ button:hover, button:focus {
     padding: 0 20px;
 }
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 600px) {
     .about_content {
         text-align: center;
         max-width: 100%;
         margin: 0 auto;
         padding: 0 20px;
     }
+
+    .about_content h1.white-box {
+        font-size: 38px;
+    }
+
+    .about_content h2.white-box {
+        font-size: 30px;
+    }
 }
-
-.chat-images-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px; /* Space between the images */
-}
-
-.chat-image {
-    width: 48%; /* Each image takes up 48% of the available width */
-    height: auto; /* Maintain aspect ratio */
-}
-
-.link-spacing {
-    margin-left: 20px; /* Adjust this value to increase the spacing */
-}
-
-
 
 
 /* Toolbelt */
@@ -381,6 +423,19 @@ button:hover, button:focus {
     margin: 0 30px;
   }
 
+  @media all and (max-width: 750px) {
+    .toolbelt:before,
+    .toolbelt:after {
+      width: 50px;
+    }
+  
+    .toolbelt__logos img {
+      height: 35px;
+      margin: 0 15px;
+    }
+
+  }
+
 
   
 
@@ -410,6 +465,15 @@ button:hover, button:focus {
 .contact__animation img:hover {
     animation: shake 0.3s infinite;
 }
+
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0eg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
   
 /* Für Tablets (Bildschirmbreite bis 1024px) */
 @media (max-width: 1024px) {
@@ -526,11 +590,6 @@ button:hover, button:focus {
         width: 22px;
         height: 22px;
     }
-
-    .page-header img {
-        width: 80px;
-        height: 80px; 
-    }
 }
 
 /* Für Ultra-Wide Bildschirme (Bildschirmbreite ab 1920px) */
@@ -549,10 +608,3 @@ button:hover, button:focus {
     }
 }
 
-@keyframes shake {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(5deg); }
-    50% { transform: rotate(0eg); }
-    75% { transform: rotate(-5deg); }
-    100% { transform: rotate(0deg); }
-}

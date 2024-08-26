@@ -15,16 +15,16 @@
     --font-style2: normal;
 }
 
-/* Grundlayout für die gesamte Seite */
+/* Basic layout for the entire page */
 body, html {
-    height: 100%; /* Macht sicher, dass das HTML und der Body die volle Höhe des Fensters einnehmen */
+    height: 100%; /* Ensures that HTML and body take the full height of the window */
     margin-bottom: 0px;
     display: flex;
     flex-direction: column;
 }
 
 main {
-    flex: 1; /* Hauptinhalt nimmt den verbleibenden Platz ein */
+    flex: 1; /* Main content takes up the remaining space */
 }
 
 body {
@@ -35,7 +35,6 @@ body {
     font-size: var(--font-size-base);
     line-height: 1.6;
 }
-
 
 h1 {
     font-family: var(--font-family);
@@ -60,9 +59,9 @@ h3 {
 }
 
 .white-box {
-    padding: 10px; /* Füge etwas Abstand zwischen Text und Rahmen hinzu */
-    border: 2px solid white; /* Stelle einen weißen Rahmen mit einer Dicke von 2 Pixeln ein */
-    display: inline-block; /* Der Rahmen wird nur so groß wie der Inhalt und das Padding */
+    padding: 10px; /* Adds some space between text and border */
+    border: 2px solid white; /* Sets a white border with a thickness of 2 pixels */
+    display: inline-block; /* The border is only as big as the content and padding */
 }
 
 a {
@@ -80,7 +79,6 @@ a:hover, a:focus {
 a:active {
     color: var(--active-link-color);
 }
-
 
 button {
     border: none;
@@ -185,9 +183,6 @@ button:hover, button:focus {
     width: auto; /* Remove fixed width */
 }
 
-
-
-
 /* HOME.HTML */
 
 .profile {
@@ -198,9 +193,6 @@ button:hover, button:focus {
     margin: 0 auto;
     float: none;
 }
-
-
-
 
 /* WORK.HTML */
 
@@ -224,7 +216,6 @@ button:hover, button:focus {
 
     .grid__item:last-child {
         grid-column: 3 / 2;
-        
     }
 }
 
@@ -243,7 +234,7 @@ button:hover, button:focus {
     height: auto; /* Maintain aspect ratio */
 }
 
-/* ultra wide screens */
+/* ultra-wide screens */
 @media all and (min-width: 1920px) {
     .grid {
         margin: 16px 400px;
@@ -295,7 +286,6 @@ button:hover, button:focus {
 
     .grid__item:last-child {
         grid-column: 2 / 1;
-        
     }
 }
 
@@ -326,7 +316,6 @@ button:hover, button:focus {
     font-size: 1rem; /* Default size */
 }
 
-
 .custom-list {
     list-style-type: none;
 }
@@ -334,10 +323,6 @@ button:hover, button:focus {
 .heading_work {
     margin-left: 24px;
 }
-
-
-
-
 
 /* ABOUT.HTML */
 
@@ -361,7 +346,6 @@ button:hover, button:focus {
     }
 }
 
-
 /* Toolbelt */
 @keyframes toolbelt {
     from {
@@ -370,56 +354,57 @@ button:hover, button:focus {
     to {
       transform: translateX(-100%);
     }
-  }
-  .toolbelt {
-    margin:  5vh auto;
+}
+
+.toolbelt {
+    margin: 5vh auto;
     max-width: 75%;
     overflow: hidden;
     white-space: nowrap;
     position: relative;
-  }
-  
-  .toolbelt h1 {
+}
+
+.toolbelt h1 {
     text-align: center;
     padding: 10px;
-  }
-  
-  .toolbelt:before,
-  .toolbelt:after {
+}
+
+.toolbelt:before,
+.toolbelt:after {
     position: absolute;
     content: "";
     top: 0;
     width: 250px;
     height: 100%;
     z-index: 2;
-  }
-  
-  .toolbelt:before {
+}
+
+.toolbelt:before {
     left: 0;
     background: linear-gradient(to left, rgba(255, 255, 255, 0), var(--button-text-color));
-  }
-  
-  .toolbelt:after {
+}
+
+.toolbelt:after {
     right: 0;
     background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--button-text-color));
-  }
-  
-  .toolbelt:hover .toolbelt__logos {
+}
+
+.toolbelt:hover .toolbelt__logos {
     animation-play-state: paused;
-  }
-  
-  .toolbelt__logos {
+}
+
+.toolbelt__logos {
     display: inline-block;
     padding: 30px 0;
     animation: 25s toolbelt infinite linear;
-  }
-  
-  .toolbelt__logos img {
+}
+
+.toolbelt__logos img {
     height: 60px;
     margin: 0 30px;
-  }
+}
 
-  @media all and (max-width: 750px) {
+@media all and (max-width: 750px) {
     .toolbelt:before,
     .toolbelt:after {
       width: 50px;
@@ -429,12 +414,7 @@ button:hover, button:focus {
       height: 50px;
       margin: 0 15px;
     }
-
-  }
-
-
-  
-
+}
 
 /* CONTACT HTML */
 
@@ -445,18 +425,15 @@ button:hover, button:focus {
     justify-content: space-evenly;
 }
 
-
 .contact__animation {
     margin-right: 10%; 
-    
 }
 
 .contact__animation img {
-    width: 270px; /* Standardbildgröße für Desktop */
+    width: 270px; /* Standard image size for desktop */
     height: 270px;
 }
 
-    
 /* SVG animation */
 .contact__animation img:hover {
     animation: shake 0.3s infinite;
@@ -470,8 +447,7 @@ button:hover, button:focus {
     100% { transform: rotate(0deg); }
 }
 
-  
-/* Für Tablets (Bildschirmbreite bis 1024px) */
+/* For tablets (screen width up to 1024px) */
 @media (max-width: 1024px) {
     .address {
         flex-direction: column;
@@ -482,20 +458,20 @@ button:hover, button:focus {
     }
 
     .contact__animation {
-        margin-right: 0; /* Bild unter den Text setzen */
+        margin-right: 0; /* Place image under the text */
     }
 
     .contact__animation img {
-        width: 270px; /* Bildgröße für Tablets */
+        width: 270px; /* Image size for tablets */
         height: 270px;
     }
 
     .address h1 {
-        font-size: 60px; /* Leicht kleinere Schriftgröße */
+        font-size: 60px; /* Slightly smaller font size */
     }
 
     .address p {
-        font-size: 20px; /* Leicht kleinere Schriftgröße */
+        font-size: 20px; /* Slightly smaller font size */
     }
 
     .page-footer p,a {
@@ -513,7 +489,7 @@ button:hover, button:focus {
     }
 }
 
-/* Für Smartphones (Bildschirmbreite bis 768px) */
+/* For smartphones (screen width up to 768px) */
 @media (max-width: 768px) {
     .address {
         margin: 15px;
@@ -524,20 +500,20 @@ button:hover, button:focus {
     }
 
     .contact__animation {
-        margin-right: 0; /* Bild unter den Text setzen */
+        margin-right: 0; /* Place image under the text */
     }
 
     .contact__animation img {
-        width: 200px; /* Bildgröße für Smartphones */
+        width: 200px; /* Image size for smartphones */
         height: 200px;
     }
 
     .address h1 {
-        font-size: 55px; /* Kleinere Schriftgröße */
+        font-size: 55px; /* Smaller font size */
     }
 
     .address p {
-        font-size: 16px; /* Kleinere Schriftgröße */
+        font-size: 16px; /* Smaller font size */
     }
 
     .page-footer p,a {
@@ -555,7 +531,7 @@ button:hover, button:focus {
     }
 }
 
-/* Für sehr kleine Smartphones (Bildschirmbreite bis 480px) */
+/* For very small smartphones (screen width up to 480px) */
 @media (max-width: 480px) {
     .address {
         margin: 10px;
@@ -566,16 +542,16 @@ button:hover, button:focus {
     }
 
     .contact__animation img {
-        width: 120px; /* Bildgröße für kleine Smartphones */
+        width: 120px; /* Image size for small smartphones */
         height: 120px;
     }
 
     .address h1 {
-        font-size: 28px; /* Noch kleinere Schriftgröße */
+        font-size: 28px; /* Even smaller font size */
     }
 
     .address p {
-        font-size: 12px; /* Noch kleinere Schriftgröße */
+        font-size: 12px; /* Even smaller font size */
     }
 
     .page-footer p,a {
@@ -588,19 +564,18 @@ button:hover, button:focus {
     }
 }
 
-/* Für Ultra-Wide Bildschirme (Bildschirmbreite ab 1920px) */
+/* For ultra-wide screens (screen width from 1920px) */
 @media (min-width: 1920px) {
     .contact__animation img {
-        width: 300px; /* Größeres Bild für große Bildschirme */
+        width: 300px; /* Larger image for big screens */
         height: 300px;
     }
 
     .address h1 {
-        font-size: 64px; /* Größere Schriftgröße */
+        font-size: 64px; /* Larger font size */
     }
 
     .address p {
-        font-size: 18px; /* Größere Schriftgröße */
+        font-size: 18px; /* Larger font size */
     }
 }
-

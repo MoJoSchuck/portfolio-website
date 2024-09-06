@@ -487,6 +487,10 @@ button:hover, button:focus {
         width: 190px;
         height: 120px; 
     }
+
+    .outer_rim_button {
+        font-size: 20px;
+    }
 }
 
 /* For smartphones (screen width up to 768px) */
@@ -529,6 +533,10 @@ button:hover, button:focus {
         width: 190px;
         height: 120px; 
     }
+
+    .outer_rim_button {
+        font-size: 16px;
+    }
 }
 
 /* For very small smartphones (screen width up to 480px) */
@@ -562,6 +570,10 @@ button:hover, button:focus {
         width: 28px;
         height: 28px;
     }
+
+    .outer_rim_button {
+        font-size: 11px;
+    }
 }
 
 /* For ultra-wide screens (screen width from 1920px) */
@@ -577,5 +589,9 @@ button:hover, button:focus {
 
     .address p {
         font-size: 18px; /* Larger font size */
+    }
+
+    .outer_rim_button {
+        font-size: 18px;
     }
 }

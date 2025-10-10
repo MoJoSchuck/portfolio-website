@@ -214,9 +214,9 @@ button:hover, button:focus {
         transition: transform 0.3s ease; /* Add smooth transition for hover effect */
     }
 
-    .grid__item:last-child {
+    /* .grid__item:last-child {
         grid-column: 3 / 2;
-    }
+    } */
 }
 
 .link-spacing {

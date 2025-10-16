@@ -404,6 +404,11 @@ button:hover, button:focus {
     margin: 0 30px;
 }
 
+/* Slightly reduce Express logo size for visual balance */
+.toolbelt__logos img[src$="express.svg"] {
+    height: 52px;
+}
+
 @media all and (max-width: 750px) {
     .toolbelt:before,
     .toolbelt:after {
@@ -414,6 +419,11 @@ button:hover, button:focus {
       height: 50px;
       margin: 0 15px;
     }
+
+        /* Mobile: keep Express a bit smaller too */
+        .toolbelt__logos img[src$="express.svg"] {
+            height: 44px;
+        }
 }
 
 /* CONTACT HTML */

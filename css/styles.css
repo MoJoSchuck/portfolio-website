@@ -1,6 +1,8 @@
 /* Color palette */
 :root {
     --primary-color: #e8eaed; /* Main color */
+    --project-accent: #c13d6d; /* Darker accent tone */
+    --project-body-color: #b7bcc1; /* Slightly darker, muted body text */
     --visited-link-color: #e8eaed; /* Visited link color */
     --active-link-color: #579aff; /* Active link color */
     --button-bg-color: #e8eaed; /* Background color for buttons */
@@ -202,16 +204,20 @@ button:hover, button:focus {
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: 30px; /* Increase the gap between grid items */
         margin: 16px 24px;
+    /* Make rows consistent so flex children inside can stretch */
+    align-items: stretch;
     }
 
     .grid__item {
-        background-color: rgb(44, 41, 41);
-        color: white;
-        width: auto;
-        min-height: auto;
-        margin: 0;
-        padding: 24px;
-        transition: transform 0.3s ease; /* Add smooth transition for hover effect */
+    background-color: rgb(44, 41, 41);
+    color: white;
+    width: auto;
+    margin: 0;
+    padding: 24px;
+    transition: transform 0.3s ease; /* Add smooth transition for hover effect */
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
     }
 
     /* .grid__item:last-child {
@@ -302,6 +308,10 @@ button:hover, button:focus {
 }
 
 .grid__item img {
+/* Responsive grid columns: 1 → 2 → 3 */
+.grid { grid-template-columns: 1fr; gap: clamp(16px, 2vw, 30px); }
+@media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }
     max-width: 100%;
     height: auto;
     display: block;
@@ -314,6 +324,126 @@ button:hover, button:focus {
 
 .grid__item p {
     font-size: 1rem; /* Default size */
+    flex-grow: 1; /* Allow description to take remaining space so links & icons sit at bottom */
+}
+
+/* Tech icons row */
+.tech-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.tech-icons img {
+    height: 32px;
+    width: auto;
+    opacity: 0.85;
+    filter: grayscale(10%);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.tech-icons img:hover,
+.tech-icons img:focus {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+/* Thumbnail containers: force consistent aspect ratio & full-width image at top */
+.grid__item > div[class$="images-row"]:not(.chat-images-row) {
+    order: 1;
+    width: calc(100% + 48px); /* bleed to card edges (24px left + right) */
+    aspect-ratio: 16/9; /* Uniform height relative to width */
+    overflow: hidden;
+    border-radius: 12px 12px 0 0; /* match card radius on top */
+    margin: -24px -24px 16px -24px; /* remove inner padding around image */
+    background: #111; /* Fallback background */
+    position: relative; /* Needed for overlay positioning */
+}
+
+.grid__item h2 {
+    order: 2;
+    margin: 0 0 8px 0;
+    line-height: 1;
+}
+
+.title-row { order: 2; margin: 0 0 8px 0; }
+.title-row { display:flex; align-items:center; gap:8px; }
+.title-link { display:flex; align-items:flex-start; gap:8px; color:inherit; text-decoration:none; }
+.title-row h2, .title-link h2 { margin:0; order:0; display:inline-block; }
+/* Project title & icon hover: color shift instead of underline */
+.title-link h2 { transition: color 0.25s ease; }
+.title-link:hover h2 { color: var(--project-accent); text-decoration: none; }
+.share-icon {
+    width: 1.25em; /* size scales with font */
+    height: 1.25em;
+    background-color: var(--primary-color); /* default icon color */
+    -webkit-mask: url('../img/share.png') center / contain no-repeat;
+    mask: url('../img/share.png') center / contain no-repeat;
+    opacity: 0.9;
+    transition: background-color 0.25s ease, opacity 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+    margin: 0;
+    flex: 0 0 auto;
+    vertical-align: top;
+    position: relative;
+    top: -3px; /* optical alignment */
+}
+
+/* Stronger override so global .grid__item img rules don't push the icon below */
+.grid__item .title-link > .share-icon {
+    display: inline-block !important;
+    margin: 0 !important;
+    max-width: none;
+    line-height: 1;
+}
+.title-link:hover .share-icon {
+    opacity: 1;
+    transform: translateY(-1px);
+    background-color: var(--project-accent); /* exact same accent as title */
+}
+
+.grid__item > p { order: 3; margin-top: 4px; }
+.grid__item > a { order: 4; }
+.grid__item > .tech-icons { order: 5; }
+
+.grid__item > div[class$="images-row"]:not(.chat-images-row) img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 0;
+}
+
+/* Chat images keep side-by-side layout but move to top */
+.chat-images-row { 
+    order: 1; 
+    width: calc(100% + 48px);
+    margin: -24px -24px 16px -24px;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+    position: relative;
+}
+.chat-images-row img { object-fit: cover; }
+
+/* Clean diagonal bottom edge, like the reference */
+.grid__item > div[class$="images-row"] {
+    /* Reverse diagonal: right side deeper than left */
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 78%);
+}
+
+/* Links row spacing tweak */
+.grid__item a { display: inline-block; margin-top: 4px; }
+.grid__item a + a { margin-left: 16px; }
+
+/* Project body text tone */
+.grid__item > p { color: var(--project-body-color); }
+
+@media (min-width: 1200px) {
+    .tech-icons img {
+        height: 32px;
+    }
 }
 
 .custom-list {

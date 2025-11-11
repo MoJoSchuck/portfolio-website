@@ -318,8 +318,10 @@ button:hover, button:focus {
     margin: 0 auto;
 }
 
+.grid__item { transition: transform 220ms ease-out, box-shadow 220ms ease-out; }
 .grid__item:hover {
-    transform: scale(1.1); /* Enlarge the grid item on hover */
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
 
 .grid__item p {
@@ -360,6 +362,7 @@ button:hover, button:focus {
     margin: -24px -24px 16px -24px; /* remove inner padding around image */
     background: #111; /* Fallback background */
     position: relative; /* Needed for overlay positioning */
+    perspective: 900px; /* allow subtle 3D tilt */
 }
 
 .grid__item h2 {
@@ -452,6 +455,29 @@ button:hover, button:focus {
 
 .heading_work {
     margin-left: 24px;
+}
+
+/* Random tilt variants (added/removed via JS on hover) – applied to whole card */
+.grid__item.tilt-left:hover {
+    transform: translateY(-6px) rotate(-2.2deg);
+}
+.grid__item.tilt-right:hover {
+    transform: translateY(-6px) rotate(2.2deg);
+}
+.grid__item.tilt-up:hover {
+    transform: translateY(-8px) rotateX(5deg);
+    transform-origin: 50% 100%;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .grid__item, .grid__item:hover,
+    .grid__item > div[class$="images-row"]:not(.chat-images-row) img,
+    .grid__item:hover > div[class$="images-row"]:not(.chat-images-row) img {
+        transition: none !important;
+        transform: none !important;
+        box-shadow: none !important;
+    }
 }
 
 /* ABOUT.HTML */

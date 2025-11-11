@@ -202,7 +202,7 @@ button:hover, button:focus {
     .grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 30px; /* Increase the gap between grid items */
+        gap: clamp(24px, 3vw, 40px); /* Responsive spacing between cards */
         margin: 16px 24px;
     /* Make rows consistent so flex children inside can stretch */
     align-items: stretch;
@@ -257,7 +257,7 @@ button:hover, button:focus {
 /* Adjusting the gap for smaller screens */
 @media all and (max-width: 750px) {
     .grid {
-        grid-gap: 20px; /* Reduce the gap slightly for smaller screens */
+        gap: 20px; /* Comfortable spacing on small screens */
     }
 }
 
@@ -297,7 +297,7 @@ button:hover, button:focus {
 
 @media all and (max-width: 750px) {
     .grid {
-        grid-gap: 10px;
+        gap: 20px; /* unify small-screen gap */
     }
 }
 

@@ -19,14 +19,29 @@
     />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="js/nav.js" defer></script>
     <script src="js/tilt.js" defer></script>
   </head>
 
   <body>
     <header class="page-header">
       <!-- Logo -->
-      <img src="img/logo.svg" alt="A personal logo" class="page-header__item" />
-      <nav class="main navigation page-header__item">
+      <img
+        src="img/logo.svg"
+        alt="A personal logo"
+        class="page-header__item site-logo"
+      />
+      <button
+        class="nav-toggle"
+        aria-label="Open menu"
+        aria-controls="primary-navigation"
+        aria-expanded="false"
+      >
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+      </button>
+      <nav id="primary-navigation" class="main navigation page-header__item">
         <ul role="menubar" class="navigation-list">
           <li role="presentation">
             <a

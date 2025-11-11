@@ -200,10 +200,12 @@ button:hover, button:focus {
 
 @supports (display: grid) {
     .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: clamp(24px, 3vw, 40px); /* Responsive spacing between cards */
-        margin: 16px 24px;
+    display: grid;
+    grid-template-columns: 1fr; /* mobile-first: single column */
+    gap: clamp(24px, 3vw, 40px); /* Responsive spacing between cards */
+    margin: 24px auto; /* center grid */
+    padding: 0 24px; /* side gutters on narrow widths */
+    max-width: 1400px; /* limit line-length on large screens */
     /* Make rows consistent so flex children inside can stretch */
     align-items: stretch;
     }
@@ -218,11 +220,20 @@ button:hover, button:focus {
     display: flex;
     flex-direction: column;
     border-radius: 12px;
+    overflow: hidden; /* keep media from overflowing on tiny cards */
     }
 
     /* .grid__item:last-child {
         grid-column: 3 / 2;
     } */
+}
+
+/* Mobile-first breakpoints: 1 → 2 → 3 columns */
+@media (min-width: 640px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 .link-spacing {
@@ -240,19 +251,7 @@ button:hover, button:focus {
     height: auto; /* Maintain aspect ratio */
 }
 
-/* ultra-wide screens */
-@media all and (min-width: 1920px) {
-    .grid {
-        margin: 16px 400px;
-    }
-}
-
-/* big screens */
-@media all and (min-width: 750px) and (max-width: 1920px) {
-    .grid {
-        margin: 16px 100px;
-    }
-}
+/* container margins handled by max-width + auto; remove old margin hacks */
 
 /* Adjusting the gap for smaller screens */
 @media all and (max-width: 750px) {
@@ -262,37 +261,14 @@ button:hover, button:focus {
 }
 
 @media all and (max-width: 500px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
-
-    .grid__item {
-        padding: 12px;
-        margin: 8px 0;
-    }
-
-    .heading_work h1 {
-        font-size: 36px; /* Adjust heading size for small screens */
-    }
-
-    .grid__item:last-child {
-        grid-column: auto / auto;
-        grid-row: auto / auto;
-    }
+    .grid__item { padding: 12px; margin: 8px 0; }
+    .heading_work h1 { font-size: 36px; }
+    .grid__item:last-child { grid-column: auto / auto; grid-row: auto / auto; }
 }
 
 @media all and (min-width: 500px) and (max-width: 750px) {
-    .grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .grid__item {
-        padding: 16px;
-    }
-
-    .grid__item:last-child {
-        grid-column: 2 / 1;
-    }
+    .grid__item { padding: 16px; }
+    .grid__item:last-child { grid-column: 2 / 1; }
 }
 
 @media all and (max-width: 750px) {
@@ -308,10 +284,6 @@ button:hover, button:focus {
 }
 
 .grid__item img {
-/* Responsive grid columns: 1 → 2 → 3 */
-.grid { grid-template-columns: 1fr; gap: clamp(16px, 2vw, 30px); }
-@media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }
     max-width: 100%;
     height: auto;
     display: block;
@@ -355,11 +327,12 @@ button:hover, button:focus {
 /* Thumbnail containers: force consistent aspect ratio & full-width image at top */
 .grid__item > div[class$="images-row"]:not(.chat-images-row) {
     order: 1;
-    width: calc(100% + 48px); /* bleed to card edges (24px left + right) */
+    /* Use negative margins instead of expanding width; avoids sub‑pixel overflow on very narrow cards */
+    width: auto; /* let it size naturally */
     aspect-ratio: 16/9; /* Uniform height relative to width */
     overflow: hidden;
     border-radius: 12px 12px 0 0; /* match card radius on top */
-    margin: -24px -24px 16px -24px; /* remove inner padding around image */
+    margin: -24px -24px 16px -24px; /* pull to card edges */
     background: #111; /* Fallback background */
     position: relative; /* Needed for overlay positioning */
     perspective: 900px; /* allow subtle 3D tilt */
@@ -416,7 +389,7 @@ button:hover, button:focus {
     height: 100%;
     object-fit: cover;
     display: block;
-    margin: 0;
+    margin: 0; /* no extra space that could cause overflow */
 }
 
 /* Chat images keep side-by-side layout but move to top */
@@ -494,6 +467,18 @@ button:hover, button:focus {
         text-align: center;
         max-width: 100%;
         margin: 0 auto;
+
+/* On very narrow screens remove the horizontal bleed to keep image fully inside and centered */
+@media (max-width: 420px) {
+    .grid__item { padding: 16px; }
+    .grid__item > div[class$="images-row"]:not(.chat-images-row),
+    .chat-images-row {
+        margin: 0 0 12px 0; /* no negative margins */
+        border-radius: 10px; /* soften slightly when inside padding */
+    }
+    .grid__item > div[class$="images-row"]:not(.chat-images-row) { aspect-ratio: 16/10; } /* a bit shorter so text isn't pushed too far down */
+    .heading_work { margin-left: 16px; }
+}
         padding: 0 20px;
     }
 

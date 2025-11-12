@@ -186,7 +186,7 @@ button:hover, button:focus {
 
 @media (max-width: 700px) {
     .site-logo { display: none; }
-    .nav-toggle { display: flex; margin-left: auto; min-width: 44px; min-height: 44px; }
+    .nav-toggle { display: flex; margin-left: auto; min-width: 44px; min-height: 44px; z-index: 1001; }
     .page-header { align-items: center; }
     #primary-navigation {
             position: absolute;
@@ -200,6 +200,7 @@ button:hover, button:focus {
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.25s ease, transform 0.25s ease;
+            z-index: 1000; /* ensure menu overlays project cards */
         }
     #primary-navigation.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
     #primary-navigation .navigation-list { display: flex; flex-direction: column; gap: 12px; }

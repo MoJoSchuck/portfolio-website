@@ -593,12 +593,18 @@ button:hover, button:focus {
 .toolbelt__logos {
     display: inline-block;
     padding: 30px 0;
-    animation: 25s toolbelt infinite linear;
+    /* Start paused; JS will add .play after images/band width are known */
+    animation: none;
 }
 
 .toolbelt__logos img {
     height: 60px;
     margin: 0 30px;
+}
+
+/* When ready, JS adds .play to start marquee */
+.toolbelt__logos.play {
+    animation: 25s toolbelt infinite linear;
 }
 
 /* Slightly reduce Express logo size for visual balance */
